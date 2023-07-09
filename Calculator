@@ -1,0 +1,116 @@
+import React, { useState } from 'react';
+import './App.css';
+
+function App() {
+  const [result, setResult] = useState('');
+
+  const handleClick = (value) => {
+    setResult(result + value);
+  };
+
+  const calculateResult = () => {
+    try {
+      setResult(eval(result));
+    } catch (error) {
+      setResult('Error');
+    }
+  };
+
+  const clearResult = () => {
+    setResult('');
+  };
+
+  return (
+    <div className="App">
+      <div className="calculator">
+        <input type="text" value={result} readOnly />
+        <div className="buttons">
+          <button onClick={() => handleClick('7')}>7</button>
+          <button onClick={() => handleClick('8')}>8</button>
+          <button onClick={() => handleClick('9')}>9</button>
+          <button onClick={() => handleClick('4')}>4</button>
+          <button onClick={() => handleClick('5')}>5</button>
+          <button onClick={() => handleClick('6')}>6</button>
+          <button onClick={() => handleClick('1')}>1</button>
+          <button onClick={() => handleClick('2')}>2</button>
+          <button onClick={() => handleClick('3')}>3</button>
+          <button onClick={() => handleClick('0')}>0</button>
+          <button onClick={() => handleClick('.')}>.</button>
+          <button onClick={calculateResult}>=</button>
+        </div>
+        <div className="buttons">
+          <button onClick={() => handleClick('+')}>+</button>
+          <button onClick={() => handleClick('-')}>-</button>
+          <button onClick={() => handleClick('*')}>*</button>
+          <button onClick={() => handleClick('/')}>/</button>
+          <button onClick={clearResult}>C</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.calculator {
+  width: 300px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+}
+
+.calculator input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 24px;
+  text-align: right;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.calculator .buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.calculator button {
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.calculator button:hover {
+  background-color: #e6e6e6;
+}
+
